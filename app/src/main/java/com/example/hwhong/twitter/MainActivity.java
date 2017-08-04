@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,17 +40,23 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        ButterKnife.bind(this);
+
         initViewPagerAndTabs();
     }
 
     private void initViewPagerAndTabs() {
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(SearchFragment.createInstance(20), "Notifications");
-        pagerAdapter.addFragment(SearchFragment.createInstance(4), "Home");
+        pagerAdapter.addFragment(SearchFragment.createInstance(10), "Home");
+        pagerAdapter.addFragment(SearchFragment.createInstance(10), "Search");
+        pagerAdapter.addFragment(SearchFragment.createInstance(10), "Notifications");
+        pagerAdapter.addFragment(SearchFragment.createInstance(10), "Messages");
 
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
+        for(int i = 0; i < icons.length; i++) {
+            tabLayout.getTabAt(i).setIcon(icons[i]);
+        }
     }
 
     static class PagerAdapter extends FragmentPagerAdapter {
