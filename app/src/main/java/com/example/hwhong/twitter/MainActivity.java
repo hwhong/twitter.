@@ -16,7 +16,16 @@ import com.example.hwhong.twitter.Search.SearchFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 public class MainActivity extends AppCompatActivity {
+
+    // View bindings
+    @BindView(R.id.viewPager)               ViewPager viewPager;
+    @BindView(R.id.tabLayout)               TabLayout tabLayout;
+
+    // Data elements
+    private int[] icons = new int[]{R.drawable.ic_house, R.drawable.ic_search, R.drawable.ic_bell, R.drawable.ic_message};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +43,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViewPagerAndTabs() {
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(SearchFragment.createInstance(20), "Notifications");
         pagerAdapter.addFragment(SearchFragment.createInstance(4), "Home");
-        viewPager.setAdapter(pagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     static class PagerAdapter extends FragmentPagerAdapter {
