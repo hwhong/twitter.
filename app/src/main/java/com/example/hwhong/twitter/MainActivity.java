@@ -26,7 +26,22 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tabLayout)               TabLayout tabLayout;
 
     // Data elements
-    private int[] icons = new int[]{R.drawable.ic_house, R.drawable.ic_search, R.drawable.ic_bell, R.drawable.ic_message};
+    private int[] unselected_icons = new int[]{
+                                    R.drawable.ic_house,
+                                    R.drawable.ic_search,
+                                    R.drawable.ic_bell,
+                                    R.drawable.ic_message
+    };
+
+    private int[] selected_icons = new int[] {
+                                    R.drawable.ic_blue_house,
+                                    R.drawable.ic_blue_search,
+                                    R.drawable.ic_blue_bell,
+                                    R.drawable.ic_blue_message
+    };
+
+    private String[] pageTitles = new String[] {"Home", "Search", "Notifications", "Messages"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initViewPagerAndTabs();
+        initTabIcons();
     }
 
     private void initViewPagerAndTabs() {
@@ -54,9 +70,33 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        for(int i = 0; i < icons.length; i++) {
-            tabLayout.getTabAt(i).setIcon(icons[i]);
+        // So that icons are populated upon starting
+        tabLayout.getTabAt(0).setIcon(selected_icons[0]);
+        for(int i = 1; i < unselected_icons.length; i++) {
+            tabLayout.getTabAt(i).setIcon(unselected_icons[i]);
         }
+    }
+
+    // dynamically changing the icons on tab switches
+    private void initTabIcons() {
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.setIcon(selected_icons[tab.getPosition()]);
+                //getSupportActionBar().setTitle(pageTitles[tab.getPosition()]);
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.setIcon(unselected_icons[tab.getPosition()]);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     static class PagerAdapter extends FragmentPagerAdapter {
@@ -82,9 +122,11 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return fragmentList.size();
         }
+
+        // so that only icons are returned
         @Override
         public CharSequence getPageTitle(int position) {
-            return fragmentTitleList.get(position);
+            return null;
         }
     }
 }
