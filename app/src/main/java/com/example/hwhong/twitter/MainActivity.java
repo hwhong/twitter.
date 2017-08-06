@@ -50,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        //Remove notification bar
-        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
@@ -75,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 1; i < unselected_icons.length; i++) {
             tabLayout.getTabAt(i).setIcon(unselected_icons[i]);
         }
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.twitter_blue));
     }
 
     // dynamically changing the icons on tab switches
@@ -93,9 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
     }
 
