@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -99,10 +100,14 @@ public class MainActivity extends AppCompatActivity {
         };
         drawerLayout.setDrawerListener(mDrawerToggle);
 
+        mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_hamburger);
+
+        /*
         toolbar.setNavigationIcon(R.drawable.ic_hamburger);
         mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_hamburger); //set your own
 
         mDrawerToggle.setDrawerIndicatorEnabled(true);
+        */
         mDrawerToggle.syncState();
     }
 
