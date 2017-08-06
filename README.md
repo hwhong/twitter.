@@ -19,10 +19,10 @@ The following **required** functionality is completed:
    - [ ] message 
 
 The following **required** designs is completed:
-- [ ] An action bar that collapsed upon swiping upwards
+- [x] An action bar that collapsed upon swiping upwards
 - [ ] User can see the app icon in home screen
-- [ ] Navigation drawer populated with required icons
-- [ ] a viewpager that swaps the views in the action bar
+- [x] Navigation drawer populated with required icons
+- [x] a viewpager that swaps the views in the tool bar
 - [ ] profile page that emulates the official twitter app
 
 ## Notes
