@@ -3,13 +3,7 @@ package com.example.hwhong.twitter;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.PagerAdapter;
+
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -25,6 +19,7 @@ import com.example.hwhong.twitter.Home.HomeFragment;
 import com.example.hwhong.twitter.Messages.MessagesFragment;
 import com.example.hwhong.twitter.Notifications.NotificationsFragment;
 import com.example.hwhong.twitter.Search.SearchFragment;
+import com.example.hwhong.twitter.Utils.PagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -171,39 +166,5 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
         });
-    }
-
-    static class PagerAdapter extends FragmentPagerAdapter {
-
-        private final List<Fragment> fragmentList = new ArrayList<>();
-        private final List<String> fragmentTitleList = new ArrayList<>();
-
-        public PagerAdapter(FragmentManager fragmentManager) {
-            super(fragmentManager);
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            fragmentList.add(fragment);
-            fragmentTitleList.add(title);
-        }
-        public void addFragment(Fragment fragment) {
-            fragmentList.add(fragment);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragmentList.size();
-        }
-
-        // so that only icons are returned
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return null;
-        }
     }
 }
