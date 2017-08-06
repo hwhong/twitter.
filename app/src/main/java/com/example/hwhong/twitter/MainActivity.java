@@ -21,6 +21,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.hwhong.twitter.Home.HomeFragment;
+import com.example.hwhong.twitter.Messages.MessagesFragment;
+import com.example.hwhong.twitter.Notifications.NotificationsFragment;
 import com.example.hwhong.twitter.Search.SearchFragment;
 
 import java.util.ArrayList;
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initHamburgMenu() {
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Home");
 
         final ActionBar actionBar = getSupportActionBar();
         if(actionBar!=null)
@@ -133,10 +137,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void initViewPagerAndTabs() {
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(SearchFragment.createInstance(10), "Home");
-        pagerAdapter.addFragment(SearchFragment.createInstance(10), "Search");
-        pagerAdapter.addFragment(SearchFragment.createInstance(10), "Notifications");
-        pagerAdapter.addFragment(SearchFragment.createInstance(10), "Messages");
+        pagerAdapter.addFragment(new HomeFragment());
+        pagerAdapter.addFragment(new SearchFragment());
+        pagerAdapter.addFragment(new NotificationsFragment());
+        pagerAdapter.addFragment(new MessagesFragment());
 
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -181,6 +185,9 @@ public class MainActivity extends AppCompatActivity {
         public void addFragment(Fragment fragment, String title) {
             fragmentList.add(fragment);
             fragmentTitleList.add(title);
+        }
+        public void addFragment(Fragment fragment) {
+            fragmentList.add(fragment);
         }
 
         @Override
