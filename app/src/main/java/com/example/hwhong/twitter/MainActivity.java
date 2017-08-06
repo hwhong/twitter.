@@ -1,10 +1,13 @@
 package com.example.hwhong.twitter;
 
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initHamburgMenu() {
         setSupportActionBar(toolbar);
+
         final ActionBar actionBar = getSupportActionBar();
         if(actionBar!=null)
         {
@@ -86,21 +90,23 @@ public class MainActivity extends AppCompatActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle("open");
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("close");
             }
         };
         drawerLayout.setDrawerListener(mDrawerToggle);
+
+        toolbar.setNavigationIcon(R.drawable.ic_hamburger);
+        mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_hamburger); //set your own
 
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerToggle.syncState();
     }
 
+    //------------Three necessary methods to implement for navigation drawer to work -----
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
@@ -117,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+    //------------------------------------------------------------------------------------
 
     private void initViewPagerAndTabs() {
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
@@ -143,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 tab.setIcon(selected_icons[tab.getPosition()]);
                 //getSupportActionBar().setTitle(pageTitles[tab.getPosition()]);
                 viewPager.setCurrentItem(tab.getPosition());
+                getSupportActionBar().setTitle(pageTitles[tab.getPosition()]);
             }
 
             @Override
