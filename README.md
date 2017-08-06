@@ -31,4 +31,7 @@ The following **required** designs is completed:
 ## Libraries Used
 - Butterknife from                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_Jake Wharton_**
   http://jakewharton.github.io/butterknife/
+- Circular Image view from          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_hdodenhof_**
+  https://github.com/hdodenhof/CircleImageView
+
  
