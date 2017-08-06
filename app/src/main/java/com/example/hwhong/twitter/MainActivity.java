@@ -1,13 +1,19 @@
 package com.example.hwhong.twitter;
 
+import android.content.res.Configuration;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -24,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     // View bindings
     @BindView(R.id.viewPager)               ViewPager viewPager;
     @BindView(R.id.tabLayout)               TabLayout tabLayout;
+    @BindView(R.id.toolbar)                 Toolbar toolbar;
+    @BindView(R.id.drawer_layout)           DrawerLayout drawerLayout;
 
     // Data elements
     private int[] unselected_icons = new int[]{
@@ -41,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private String[] pageTitles = new String[] {"Home", "Search", "Notifications", "Messages"};
-
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,53 @@ public class MainActivity extends AppCompatActivity {
 
         initViewPagerAndTabs();
         initTabIcons();
+        initHamburgMenu();
+    }
+
+    private void initHamburgMenu() {
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if(actionBar!=null)
+        {
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_hamburger);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                drawerLayout,         /* DrawerLayout object */
+                R.string.navigation_drawer_open,  /* "open drawer" description */
+                R.string.navigation_drawer_close  /* "close drawer" description */
+        ) {
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getSupportActionBar().setTitle("open");
+            }
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle("close");
+            }
+        };
+        drawerLayout.setDrawerListener(mDrawerToggle);
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerToggle.syncState();
+    }
+
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     private void initViewPagerAndTabs() {
