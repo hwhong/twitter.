@@ -33,5 +33,7 @@ The following **required** designs is completed:
   http://jakewharton.github.io/butterknife/
 - Circular Image view from          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_hdodenhof_**
   https://github.com/hdodenhof/CircleImageView
+- Picasso Image loading             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_Square_**
+  http://square.github.io/picasso/
 
  
