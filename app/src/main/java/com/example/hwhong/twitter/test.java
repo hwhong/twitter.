@@ -15,7 +15,7 @@ public class test extends ListActivity {
         setContentView(R.layout.activity_test);
 
         final UserTimeline userTimeline = new UserTimeline.Builder()
-                .screenName("twitterdev")
+                .screenName("hwhong1129")
                 .build();
         final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(this)
                 .setTimeline(userTimeline)

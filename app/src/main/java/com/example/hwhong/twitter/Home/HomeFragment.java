@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,12 +26,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment  {
 
-    // View elements
-    //@BindView(R.id.twitter_listview)        ListView listView;
-    @BindView(R.id.button)                  Button button;
-
+    @BindView(R.id.home_listview)       ListView listview;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -47,12 +45,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TwitterConfig config = new TwitterConfig.Builder(getActivity())
-                .logger(new DefaultLogger(Log.DEBUG))
-                .twitterAuthConfig(new TwitterAuthConfig(getResources().getString(R.string.KEY), getResources().getString(R.string.SECRET)))
-                .debug(true)
-                .build();
-        Twitter.initialize(config);
+        Twitter.initialize(getContext());
 
         if (getArguments() != null) {
             //mParam1 = getArguments().getString(ARG_PARAM1);
@@ -63,24 +56,17 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.timeline, container, false);
+        View view =  inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
-        //getTweets();
+        final UserTimeline userTimeline = new UserTimeline.Builder()
+                .screenName("twitterdev")
+                .build();
+        final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getContext())
+                .setTimeline(userTimeline)
+                .build();
+        listview.setAdapter(adapter);
 
         return view;
     }
 
-    private void getTweets() {
-        final UserTimeline userTimeline = new UserTimeline.Builder()
-                .screenName("twitterdev")
-                .build();
-        final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getActivity().getApplicationContext())
-                .setTimeline(userTimeline)
-                .build();
-        //listView.setAdapter(adapter);
-    }
-    @OnClick(R.id.button)
-    public void test() {
-        startActivity(new Intent(getActivity().getApplicationContext(), test.class));
-    }
 }
