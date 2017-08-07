@@ -1,6 +1,7 @@
 package com.example.hwhong.twitter.Home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,9 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.hwhong.twitter.R;
+import com.example.hwhong.twitter.test;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -20,11 +23,13 @@ import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeFragment extends Fragment {
 
     // View elements
-    @BindView(R.id.twitter_listview)        ListView listView;
+    //@BindView(R.id.twitter_listview)        ListView listView;
+    @BindView(R.id.button)                  Button button;
 
 
     public HomeFragment() {
@@ -60,7 +65,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.timeline, container, false);
         ButterKnife.bind(this, view);
-        getTweets();
+        //getTweets();
 
         return view;
     }
@@ -72,6 +77,10 @@ public class HomeFragment extends Fragment {
         final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getActivity().getApplicationContext())
                 .setTimeline(userTimeline)
                 .build();
-        listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
+    }
+    @OnClick(R.id.button)
+    public void test() {
+        startActivity(new Intent(getActivity().getApplicationContext(), test.class));
     }
 }
