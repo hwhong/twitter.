@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/tools">
     <string name="app_name">twitter</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -24,4 +24,9 @@
     <string name="settings">Settings and privacy</string>
     <string name="help">Help Centre</string>
 
+    <!-- Twitter application resources -->
+    <string name="KEY">gm9qRLDvRTzfIb3mn95O7P5K1</string>
+    <string name="SECRET">t3VfHC9GiQZbKD13SxVfiJ4PHe717iTdhXlc1JgAYvvTRgivkY</string>
+
 </resources>
+

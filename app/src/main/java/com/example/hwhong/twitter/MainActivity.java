@@ -2,6 +2,7 @@ package com.example.hwhong.twitter;
 
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 
 import android.support.v4.view.ViewPager;
@@ -11,19 +12,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 
 import com.example.hwhong.twitter.Home.HomeFragment;
 import com.example.hwhong.twitter.Messages.MessagesFragment;
 import com.example.hwhong.twitter.Notifications.NotificationsFragment;
 import com.example.hwhong.twitter.Search.SearchFragment;
 import com.example.hwhong.twitter.Utils.PagerAdapter;
-import com.squareup.picasso.Picasso;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.models.Tweet;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URLEncoder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
