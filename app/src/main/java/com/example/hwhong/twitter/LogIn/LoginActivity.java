@@ -13,6 +13,7 @@ import com.example.hwhong.twitter.MainActivity;
 import com.example.hwhong.twitter.R;
 import com.mopub.volley.VolleyError;
 import com.mopub.volley.toolbox.ImageLoader;
+import com.percolate.caffeine.ToastUtils;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
@@ -108,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void failure(TwitterException e) {
                 Log.d("TwitterKit", "Verify Credentials Failure");
+                ToastUtils.quickToast(getApplicationContext(), "Authentication Failure");
             }
             @Override
             public void success(Result<User> userResult) {
