@@ -91,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initNavigationDrawerItems() {
-        View v = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        //View v = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        // above code generates a duplicate
+        View v = navigationView.getHeaderView(0);
         // might need to fix this part for butterknife
         TextView name = (TextView) v.findViewById(R.id.name);
         TextView handle = (TextView) v.findViewById(R.id.handle);
