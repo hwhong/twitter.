@@ -3,6 +3,7 @@ package com.example.hwhong.twitter;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.hwhong.twitter.Home.HomeFragment;
@@ -27,9 +29,11 @@ import com.example.hwhong.twitter.LogIn.AppSingleton;
 import com.example.hwhong.twitter.Messages.MessagesFragment;
 import com.example.hwhong.twitter.Notifications.NotificationsFragment;
 import com.example.hwhong.twitter.Search.SearchFragment;
+import com.example.hwhong.twitter.Utils.CustomLayout;
 import com.example.hwhong.twitter.Utils.PagerAdapter;
 import com.mopub.volley.VolleyError;
 import com.mopub.volley.toolbox.ImageLoader;
+import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.models.Tweet;
 
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String PROFILE_IMAGE = "PROFILE_IMAGE_URL";
     private static final String NAME = "NAME";
     private static final String HANDLE = "HANDLE";
+    private static final String BACKGROUND = "BACKGROUND";
     private static final String TAG = "main";
 
     // View bindings
@@ -98,10 +103,12 @@ public class MainActivity extends AppCompatActivity {
         TextView name = (TextView) v.findViewById(R.id.name);
         TextView handle = (TextView) v.findViewById(R.id.handle);
         dp = (CircleImageView) v.findViewById(R.id.profile_image);
+        CustomLayout nav_header = (CustomLayout) v.findViewById(R.id.nav_linear_layout);
 
         name.setText(getIntent().getStringExtra(NAME));
-        handle.setText(getIntent().getStringExtra(HANDLE));
+        handle.setText("@" + getIntent().getStringExtra(HANDLE));
         setProfilePic(getIntent().getStringExtra(PROFILE_IMAGE).replace("_normal", ""));
+        Picasso.with(this).load(Uri.parse(getIntent().getStringExtra(BACKGROUND))).into(nav_header);
     }
 
     private void initHamburgMenu() {

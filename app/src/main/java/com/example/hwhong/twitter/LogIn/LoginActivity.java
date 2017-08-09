@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String PROFILE_IMAGE = "PROFILE_IMAGE_URL";
     private static final String NAME = "NAME";
     private static final String HANDLE = "HANDLE";
+    private static final String BACKGROUND = "BACKGROUND";
 
     //Twitter Login Button
     TwitterLoginButton twitterLoginButton;
@@ -117,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra(PROFILE_IMAGE, user.profileImageUrl);
                 intent.putExtra(NAME, user.name);
                 intent.putExtra(HANDLE, user.screenName);
+                intent.putExtra(BACKGROUND, user.profileBannerUrl);
                 startActivity(intent);
             }
         });
