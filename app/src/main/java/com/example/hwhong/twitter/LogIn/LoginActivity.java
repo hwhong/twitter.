@@ -112,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
             public void success(Result<User> userResult) {
                 //If it succeeds creating a User object from userResult.data
                 User user = userResult.data;
-                //setProfilePic(user.profileImageUrl.replace("_normal", ""));
                 twitterLoginButton.setVisibility(View.GONE);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra(PROFILE_IMAGE, user.profileImageUrl);
@@ -122,22 +121,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void setProfilePic(String url){
-        ImageLoader imageLoader = AppSingleton.getInstance(getApplicationContext()).getImageLoader();
-        imageLoader.get(url, new ImageLoader.ImageListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Image Load Error: " + error.getMessage());
-            }
-
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
-                if (response.getBitmap() != null) {
-                    //userImageView.setImageBitmap(response.getBitmap());
-                }
-            }
-        });
-    }
-
 }

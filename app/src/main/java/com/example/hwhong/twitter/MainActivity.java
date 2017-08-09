@@ -1,5 +1,6 @@
 package com.example.hwhong.twitter;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -19,12 +20,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.example.hwhong.twitter.Home.HomeFragment;
+import com.example.hwhong.twitter.LogIn.AppSingleton;
 import com.example.hwhong.twitter.Messages.MessagesFragment;
 import com.example.hwhong.twitter.Notifications.NotificationsFragment;
 import com.example.hwhong.twitter.Search.SearchFragment;
 import com.example.hwhong.twitter.Utils.PagerAdapter;
+import com.mopub.volley.VolleyError;
+import com.mopub.volley.toolbox.ImageLoader;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.models.Tweet;
 
@@ -40,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String PROFILE_IMAGE = "PROFILE_IMAGE_URL";
     private static final String NAME = "NAME";
     private static final String HANDLE = "HANDLE";
+    private static final String TAG = "main";
 
     // View bindings
     @BindView(R.id.viewPager)               ViewPager viewPager;
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] pageTitles = new String[] {"Home", "Search", "Notifications", "Messages"};
     private ActionBarDrawerToggle mDrawerToggle;
+    private CircleImageView dp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +92,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void initNavigationDrawerItems() {
         View v = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        // might need to fix this part for butterknife
+        TextView name = (TextView) v.findViewById(R.id.name);
+        TextView handle = (TextView) v.findViewById(R.id.handle);
+        dp = (CircleImageView) v.findViewById(R.id.profile_image);
 
-
+        name.setText(getIntent().getStringExtra(NAME));
+        handle.setText(getIntent().getStringExtra(HANDLE));
+        setProfilePic(getIntent().getStringExtra(PROFILE_IMAGE).replace("_normal", ""));
     }
 
     private void initHamburgMenu() {
@@ -185,6 +198,24 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
+        });
+    }
+
+    // for image loading, from singleton class
+    private void setProfilePic(String url){
+        ImageLoader imageLoader = AppSingleton.getInstance(getApplicationContext()).getImageLoader();
+        imageLoader.get(url, new ImageLoader.ImageListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Image Load Error: " + error.getMessage());
+            }
+
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                if (response.getBitmap() != null) {
+                    dp.setImageBitmap(response.getBitmap());
+                }
+            }
         });
     }
 }
