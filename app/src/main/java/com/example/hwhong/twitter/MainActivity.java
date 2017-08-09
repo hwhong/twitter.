@@ -5,9 +5,11 @@ import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -17,6 +19,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,11 +31,13 @@ import com.example.hwhong.twitter.Home.HomeFragment;
 import com.example.hwhong.twitter.LogIn.AppSingleton;
 import com.example.hwhong.twitter.Messages.MessagesFragment;
 import com.example.hwhong.twitter.Notifications.NotificationsFragment;
+import com.example.hwhong.twitter.Profile.ProfileActivity;
 import com.example.hwhong.twitter.Search.SearchFragment;
 import com.example.hwhong.twitter.Utils.CustomLayout;
 import com.example.hwhong.twitter.Utils.PagerAdapter;
 import com.mopub.volley.VolleyError;
 import com.mopub.volley.toolbox.ImageLoader;
+import com.percolate.caffeine.ToastUtils;
 import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.models.Tweet;
@@ -93,6 +98,25 @@ public class MainActivity extends AppCompatActivity {
         initTabIcons();
         initHamburgMenu();
         initNavigationDrawerItems();
+        initNavDrawerIntents();
+    }
+
+    private void initNavDrawerIntents() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        break;
+                    default:
+                        ToastUtils.quickToast(getApplicationContext(), "Have to implement");
+                        break;
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
     }
 
     private void initNavigationDrawerItems() {
