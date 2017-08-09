@@ -6,12 +6,12 @@ This is an Android application that tries to emulate the offical twitter app as 
 
 The following **required** functionality is completed:
 
-- [ ] user can sign in 
+- [x] user can sign in 
 - [ ] user can sign out
 - [ ] user can view tweets on the main page (will ellaborate more once developed to this stage)
 - [ ] user can compose new tweets by tapping on the floating action button
 - [ ] navigation drawer properly takes the user to the designated fragment
-- [ ] efficient image loading 
+- [x] efficient image loading 
 - [ ] user can interact with tweets 
    - [ ] reply 
    - [ ] retweet
@@ -35,5 +35,8 @@ The following **required** designs is completed:
   https://github.com/hdodenhof/CircleImageView
 - Picasso Image loading             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_Square_**
   http://square.github.io/picasso/
+- Twitter API                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Twitter**
+- One-liners for creating objects   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Percolate**
+  https://github.com/percolate/caffeine
 
  
