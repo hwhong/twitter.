@@ -27,6 +27,7 @@
     <!-- Twitter application resources -->
     <string name="KEY">gm9qRLDvRTzfIb3mn95O7P5K1</string>
     <string name="SECRET">t3VfHC9GiQZbKD13SxVfiJ4PHe717iTdhXlc1JgAYvvTRgivkY</string>
+    <string name="title_activity_login">LoginActivity</string>
 
 </resources>
 
