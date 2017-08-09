@@ -3,6 +3,7 @@ package com.example.hwhong.twitter;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 
 import android.support.v4.view.ViewPager;
@@ -35,11 +36,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Intent strings
+    private static final String PROFILE_IMAGE = "PROFILE_IMAGE_URL";
+    private static final String NAME = "NAME";
+    private static final String HANDLE = "HANDLE";
+
     // View bindings
     @BindView(R.id.viewPager)               ViewPager viewPager;
     @BindView(R.id.tabLayout)               TabLayout tabLayout;
     @BindView(R.id.toolbar)                 Toolbar toolbar;
     @BindView(R.id.drawer_layout)           DrawerLayout drawerLayout;
+    @BindView(R.id.nav_drawer)              NavigationView navigationView;
 
     // Data elements
     private int[] unselected_icons = new int[]{
@@ -73,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
         initViewPagerAndTabs();
         initTabIcons();
         initHamburgMenu();
+        initNavigationDrawerItems();
+    }
+
+    private void initNavigationDrawerItems() {
+        View v = navigationView.inflateHeaderView(R.layout.nav_header_main);
+
+
     }
 
     private void initHamburgMenu() {

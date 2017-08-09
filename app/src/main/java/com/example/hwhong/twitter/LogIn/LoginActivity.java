@@ -33,6 +33,10 @@ import retrofit2.Call;
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "TwitterLogin" ;
+    private static final String PROFILE_IMAGE = "PROFILE_IMAGE_URL";
+    private static final String NAME = "NAME";
+    private static final String HANDLE = "HANDLE";
+
     //Twitter Login Button
     TwitterLoginButton twitterLoginButton;
 
@@ -110,7 +114,11 @@ public class LoginActivity extends AppCompatActivity {
                 User user = userResult.data;
                 //setProfilePic(user.profileImageUrl.replace("_normal", ""));
                 twitterLoginButton.setVisibility(View.GONE);
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra(PROFILE_IMAGE, user.profileImageUrl);
+                intent.putExtra(NAME, user.name);
+                intent.putExtra(HANDLE, user.screenName);
+                startActivity(intent);
             }
         });
     }
