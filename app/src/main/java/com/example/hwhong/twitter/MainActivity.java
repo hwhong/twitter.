@@ -168,12 +168,6 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_hamburger);
 
-        /*
-        toolbar.setNavigationIcon(R.drawable.ic_hamburger);
-        mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_hamburger); //set your own
-
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-        */
         mDrawerToggle.syncState();
     }
 
