@@ -1,6 +1,6 @@
 # Twitter app
 
-This is an Android application that tries to emulate the offical twitter app as much as possible.
+This is an Android application that emulates the offical twitter app as much as possible.
 
 ## Implementations
 
@@ -10,7 +10,7 @@ The following **required** functionality is completed:
 - [ ] user can sign out
 - [ ] user can view tweets on the main page (will ellaborate more once developed to this stage)
 - [ ] user can compose new tweets by tapping on the floating action button
-- [ ] navigation drawer properly takes the user to the designated fragment
+- [x] navigation drawer properly takes the user to the designated fragment (api only provides the "profile" fragment)
 - [x] efficient image loading 
 - [ ] user can interact with tweets 
    - [ ] reply 
