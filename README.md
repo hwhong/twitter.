@@ -24,6 +24,7 @@ The following **required** designs is completed:
 - [x] Navigation drawer populated with required icons
 - [x] a viewpager that swaps the views in the tool bar
 - [ ] profile page that emulates the official twitter app
+- [ ] the color of navigation drawer hamburger icon to be changed to blue
 
 ## Notes
 - The above check list is incomplete as of now, will add more functionalities once I develop more 
