@@ -215,12 +215,10 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(tab.getPosition());
                 getSupportActionBar().setTitle(pageTitles[tab.getPosition()]);
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 tab.setIcon(unselected_icons[tab.getPosition()]);
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
         });
