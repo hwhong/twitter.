@@ -145,10 +145,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                drawerLayout,         /* DrawerLayout object */
-                R.string.navigation_drawer_open,  /* "open drawer" description */
-                R.string.navigation_drawer_close  /* "close drawer" description */
+                this,                       /* host Activity */
+                drawerLayout,               /* DrawerLayout object */
+                R.string.navigation_drawer_open,   /* "open drawer" description */
+                R.string.navigation_drawer_close   /* "close drawer" description */
         ) {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
@@ -163,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.setDrawerListener(mDrawerToggle);
 
         mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_hamburger);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         mDrawerToggle.syncState();
     }
