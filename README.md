@@ -17,6 +17,7 @@ The following **required** functionality is completed:
    - [ ] retweet
    - [ ] like 
    - [ ] message 
+- [ ] user can pull the main screen to refresh tweets 
 
 The following **required** designs is completed:
 - [x] An action bar that collapsed upon swiping upwards
