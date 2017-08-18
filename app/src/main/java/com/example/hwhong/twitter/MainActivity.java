@@ -2,9 +2,7 @@ package com.example.hwhong.twitter;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,7 +15,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,10 +33,6 @@ import com.mopub.volley.VolleyError;
 import com.mopub.volley.toolbox.ImageLoader;
 import com.percolate.caffeine.ToastUtils;
 import com.squareup.picasso.Picasso;
-import com.twitter.sdk.android.core.Twitter;
-import com.twitter.sdk.android.core.models.Tweet;
-
-import java.net.URLEncoder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
