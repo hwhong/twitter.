@@ -14,6 +14,7 @@ import com.mopub.volley.toolbox.Volley;
  */
 
 public class AppSingleton {
+    // what does this do?
     private static AppSingleton mAppSingletonInstance;
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
