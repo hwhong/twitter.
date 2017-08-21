@@ -11,6 +11,7 @@ import com.mopub.volley.toolbox.Volley;
 
 /**
  * Created by hwhong on 8/9/17.
+ * for image loading
  */
 
 public class AppSingleton {
