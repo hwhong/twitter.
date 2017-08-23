@@ -11,6 +11,8 @@ import com.example.hwhong.twitter.LogIn.AppSingleton;
 import com.example.hwhong.twitter.R;
 import com.mopub.volley.VolleyError;
 import com.mopub.volley.toolbox.ImageLoader;
+import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
+import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +20,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    @BindView(R.id.profile_image)   CircleImageView dp;
+    // Intent strings
+    private static final String PROFILE_IMAGE = "PROFILE_IMAGE_URL";
+    private static final String NAME = "NAME";
+    private static final String HANDLE = "HANDLE";
+    private static final String FOLLOWERS = "FOLLOWERS";
+    private static final String FOLLOWINGS = "FOLLOWINGS";
+    private static final String BIO = "BIO";
+
+    @BindView(R.id.profile_page_dp) CircleImageView dp;
     @BindView(R.id.profile_name)    TextView name;
     @BindView(R.id.profile_handle)  TextView handle;
     @BindView(R.id.profile_bio)     TextView bio;
@@ -32,9 +42,26 @@ public class ProfileActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
+
+        initProfileItems();
     }
 
 
+    private void initProfileItems() {
+        name.setText(getIntent().getStringExtra(NAME));
+        handle.setText(getIntent().getStringExtra(HANDLE));
+        bio.setText(getIntent().getStringExtra(BIO));
+        followers.setText(getIntent().getIntExtra(FOLLOWERS, 0) + " Followers");
+        following.setText(getIntent().getIntExtra(FOLLOWINGS, 0) + " Following");
+
+        final UserTimeline userTimeline = new UserTimeline.Builder()
+                .screenName("hwhong1129")
+                .build();
+        final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getApplicationContext())
+                .setTimeline(userTimeline)
+                .build();
+        listView.setAdapter(adapter);
+    }
 
     // for image loading, from singleton class
     private void setProfilePic(String url){

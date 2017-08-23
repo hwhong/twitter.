@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         tools:context="com.example.hwhong.twitter.Profile.ProfileActivity">
 
-        <android.support.v4.widget.CircleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_page_dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -27,7 +27,7 @@
         <Button
             android:id="@+id/edit_profile_button"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="30dp"
             android:text="Edit profile"
             android:textSize="15dp"
             android:textColor="@color/tw__composer_deep_gray"
