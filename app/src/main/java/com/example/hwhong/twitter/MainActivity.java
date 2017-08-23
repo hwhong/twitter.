@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String HANDLE = "HANDLE";
     private static final String BACKGROUND = "BACKGROUND";
     private static final String TAG = "main";
+    private static final String FOLLOWERS = "FOLLOWERS";
+    private static final String FOLLOWINGS = "FOLLOWINGS";
+    private static final String BIO = "BIO";
 
     // View bindings
     @BindView(R.id.viewPager)               ViewPager viewPager;
@@ -98,7 +101,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_profile:
                         navigationView.getMenu().getItem(0).setChecked(false);
-                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        intent.putExtra(PROFILE_IMAGE, getIntent().getStringArrayExtra(PROFILE_IMAGE));
+                        intent.putExtra(NAME, getIntent().getStringExtra(NAME));
+                        intent.putExtra(HANDLE, getIntent().getStringExtra(HANDLE));
+
+                        intent.putExtra(FOLLOWERS, getIntent().getIntExtra(FOLLOWERS, 0));
+                        intent.putExtra(FOLLOWINGS, getIntent().getIntExtra(FOLLOWINGS, 0));
+                        intent.putExtra(BIO, getIntent().getStringExtra(BIO));
+                        startActivity(intent);
                         break;
                     default:
                         ToastUtils.quickToast(getApplicationContext(), "Have to implement");

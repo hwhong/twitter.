@@ -38,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
     private static final String NAME = "NAME";
     private static final String HANDLE = "HANDLE";
     private static final String BACKGROUND = "BACKGROUND";
+    private static final String FOLLOWERS = "FOLLOWERS";
+    private static final String FOLLOWINGS = "FOLLOWINGS";
+    private static final String BIO = "BIO";
 
     //Twitter Login Button
     TwitterLoginButton twitterLoginButton;
@@ -121,6 +124,11 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra(NAME, user.name);
                 intent.putExtra(HANDLE, user.screenName);
                 intent.putExtra(BACKGROUND, user.profileBannerUrl);
+
+                intent.putExtra(FOLLOWERS, user.followersCount);
+                intent.putExtra(FOLLOWINGS, user.friendsCount);
+                intent.putExtra(BIO, user.description);
+
                 startActivity(intent);
             }
         });
