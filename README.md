@@ -31,7 +31,7 @@ The following **required** designs is completed:
 - The above check list is incomplete as of now, will add more functionalities once I develop more 
 
 ## Live Demo
-<img src='http://imgur.com/a/HQZgy' title='Update one demo' width='' alt='Update 1 Demo' />
+![Demo 1](https://user-images.githubusercontent.com/18088682/29596732-0eb2f35c-87f1-11e7-8ece-0bfa13232f1c.gif)
 
 ## Libraries Used
 - Butterknife from                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_Jake Wharton_**
