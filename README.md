@@ -31,7 +31,7 @@ The following **required** designs is completed:
 - The above check list is incomplete as of now, will add more functionalities once I develop more 
 
 ## Live Demo
-![alt text](http://imgur.com/a/HQZgy)
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/HQZgy"><a href="//imgur.com/HQZgy"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 ## Libraries Used
 - Butterknife from                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_Jake Wharton_**
