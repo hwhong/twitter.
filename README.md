@@ -31,7 +31,7 @@ The following **required** designs is completed:
 - The above check list is incomplete as of now, will add more functionalities once I develop more 
 
 ## Live Demo
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/HQZgy"><a href="//imgur.com/HQZgy"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<img src='http://imgur.com/a/HQZgy' title='Update one demo' width='' alt='Update 1 Demo' />
 
 ## Libraries Used
 - Butterknife from                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_Jake Wharton_**
