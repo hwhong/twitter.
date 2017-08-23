@@ -8,8 +8,8 @@ The following **required** functionality is completed:
 
 - [x] user can sign in 
 - [ ] user can sign out
-- [ ] user can view tweets on the main page (will ellaborate more once developed to this stage)
-- [ ] user can compose new tweets by tapping on the floating action button
+- [x] user can view tweets on the main page (will ellaborate more once developed to this stage)
+- [x] user can compose new tweets by tapping on the floating action button
 - [x] navigation drawer properly takes the user to the designated fragment (api only provides the "profile" fragment)
 - [x] efficient image loading 
 - [ ] user can interact with tweets 
@@ -21,14 +21,17 @@ The following **required** functionality is completed:
 
 The following **required** designs is completed:
 - [x] An action bar that collapsed upon swiping upwards
-- [ ] User can see the app icon in home screen
+- [x] User can see the app icon in home screen
 - [x] Navigation drawer populated with required icons
 - [x] a viewpager that swaps the views in the tool bar
-- [ ] profile page that emulates the official twitter app
+- [x] profile page that emulates the official twitter app
 - [ ] the color of navigation drawer hamburger icon to be changed to blue
 
 ## Notes
 - The above check list is incomplete as of now, will add more functionalities once I develop more 
+
+## Live Demo
+![alt text](http://imgur.com/a/HQZgy)
 
 ## Libraries Used
 - Butterknife from                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_Jake Wharton_**
