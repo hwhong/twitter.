@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment  {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
         final UserTimeline userTimeline = new UserTimeline.Builder()
-                .screenName("hwhong1129")
+                .screenName("twitterdev")
                 .build();
         final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getContext())
                 .setTimeline(userTimeline)

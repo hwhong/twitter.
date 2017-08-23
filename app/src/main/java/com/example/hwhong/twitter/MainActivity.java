@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 
@@ -33,9 +34,13 @@ import com.mopub.volley.VolleyError;
 import com.mopub.volley.toolbox.ImageLoader;
 import com.percolate.caffeine.ToastUtils;
 import com.squareup.picasso.Picasso;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.tweetcomposer.ComposerActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)                 Toolbar toolbar;
     @BindView(R.id.drawer_layout)           DrawerLayout drawerLayout;
     @BindView(R.id.nav_drawer)              NavigationView navigationView;
+    @BindView(R.id.fabButton)               FloatingActionButton fab;
 
     // Data elements
     private int[] unselected_icons = new int[]{
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_profile:
                         navigationView.getMenu().getItem(0).setChecked(false);
                         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                        intent.putExtra(PROFILE_IMAGE, getIntent().getStringArrayExtra(PROFILE_IMAGE));
+                        intent.putExtra(PROFILE_IMAGE, getIntent().getStringExtra(PROFILE_IMAGE));
                         intent.putExtra(NAME, getIntent().getStringExtra(NAME));
                         intent.putExtra(HANDLE, getIntent().getStringExtra(HANDLE));
 
@@ -243,5 +249,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @OnClick(R.id.fabButton)
+    public void test() {
+        final TwitterSession session = TwitterCore.getInstance().getSessionManager()
+                .getActiveSession();
+        final Intent intent = new ComposerActivity.Builder(MainActivity.this)
+                .session(session)
+                .text("Love where you work")
+                .hashtags("#twitter")
+                .createIntent();
+        startActivity(intent);
     }
 }

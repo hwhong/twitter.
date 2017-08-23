@@ -53,6 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
         bio.setText(getIntent().getStringExtra(BIO));
         followers.setText(getIntent().getIntExtra(FOLLOWERS, 0) + " Followers");
         following.setText(getIntent().getIntExtra(FOLLOWINGS, 0) + " Following");
+        setProfilePic(getIntent().getStringExtra(PROFILE_IMAGE).replace("_normal", ""));
 
         final UserTimeline userTimeline = new UserTimeline.Builder()
                 .screenName("hwhong1129")
