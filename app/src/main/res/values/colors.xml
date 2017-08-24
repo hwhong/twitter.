@@ -11,4 +11,6 @@
     <color name="nav_icon_color">#667785</color>
 
     <color name="blue_grey">#607D8B</color>
+
+    <color name="twitter_button_color">#90CAF9</color>
 </resources>

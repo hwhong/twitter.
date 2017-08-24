@@ -27,6 +27,7 @@ import com.example.hwhong.twitter.LogIn.AppSingleton;
 import com.example.hwhong.twitter.Messages.MessagesFragment;
 import com.example.hwhong.twitter.Notifications.NotificationsFragment;
 import com.example.hwhong.twitter.Profile.ProfileActivity;
+import com.example.hwhong.twitter.Profile.TweetComposition;
 import com.example.hwhong.twitter.Search.SearchFragment;
 import com.example.hwhong.twitter.Utils.CustomLayout;
 import com.example.hwhong.twitter.Utils.PagerAdapter;
@@ -253,13 +254,10 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.fabButton)
     public void test() {
-        final TwitterSession session = TwitterCore.getInstance().getSessionManager()
-                .getActiveSession();
-        final Intent intent = new ComposerActivity.Builder(MainActivity.this)
-                .session(session)
-                .text("Love where you work")
-                .hashtags("#twitter")
-                .createIntent();
+        Intent intent = new Intent(getApplicationContext(), TweetComposition.class);
+        // put the dp image here
+        intent.putExtra(PROFILE_IMAGE, getIntent().getStringExtra(PROFILE_IMAGE));
         startActivity(intent);
+        overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
     }
 }
