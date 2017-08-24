@@ -28,7 +28,8 @@
         <activity
             android:name=".Profile.ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Profile.TweetComposition"></activity>
+        <activity android:name=".Profile.TweetComposition"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
