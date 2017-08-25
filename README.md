@@ -32,6 +32,7 @@ The following **required** designs is completed:
 
 ## Live Demo
 ![Demo 1](https://user-images.githubusercontent.com/18088682/29596732-0eb2f35c-87f1-11e7-8ece-0bfa13232f1c.gif)
+![Demo 2](https://user-images.githubusercontent.com/18088682/29699908-046b35f0-8993-11e7-82ac-bc37ebcc33de.gif)
 
 ## Libraries Used
 - Butterknife from                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**_Jake Wharton_**
