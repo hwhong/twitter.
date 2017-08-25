@@ -60,13 +60,13 @@ public class SearchFragment extends Fragment {
 
     private List<String> createItemList() {
         List<String> itemList = new ArrayList<>();
-        Bundle bundle = getArguments();
-        if(bundle!=null) {
-            int itemsCount = bundle.getInt(KEY);
-            for (int i = 0; i < itemsCount; i++) {
-                itemList.add("Item " + i);
-            }
-        }
+        itemList.add("#twittedev");
+        itemList.add("software");
+        itemList.add("engineering");
+        itemList.add("android");
+        itemList.add("development");
+        itemList.add("androidO");
+
         return itemList;
     }
 
