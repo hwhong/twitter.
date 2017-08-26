@@ -94,15 +94,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //Getting the username from session
         final String userName = session.getUserName();
-        //userNameTextView = (TextView)findViewById(R.id.userTextView);
-        //userImageView = (ImageView) findViewById(R.id.userImageView);
-        //userNameTextView.setText("@" + userName);
-
-        //TwitterSession   session = result.data;
-        //Twitter          twitter = Twitter.getInstance();
-        //TwitterApiClient api     = twitter.core.getApiClient(session);
-        //AccountService service = api.getAccountService();
-        //Call<User>       user    = service.verifyCredentials(true, true, true);
 
         //Getting the account service of the user logged in
         TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
