@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String FOLLOWINGS = "FOLLOWINGS";
     private static final String BIO = "BIO";
 
-    //Twitter Login Button
+    //Twitter Login Button (from API)
     TwitterLoginButton twitterLoginButton;
 
     @Override
